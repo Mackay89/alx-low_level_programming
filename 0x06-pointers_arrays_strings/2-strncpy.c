@@ -26,5 +26,3 @@ char *_strncyp(char *dest, char *src, int n)
 	return (dest);
 
 }	
- 
-
