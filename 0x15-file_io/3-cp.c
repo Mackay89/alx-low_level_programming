@@ -92,5 +92,4 @@ int main(int argc, char *argv[])
 	close_file(t);
 
 	return (0);
-
 }
