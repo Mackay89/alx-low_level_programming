@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_f file_t\n");
 		exit(97);
 	}
 
@@ -90,6 +90,5 @@ int main(int argc, char *argv[])
 	free(buffer);
 	close_file(f);
 	close_file(t);
-
 	return (0);
 }
