@@ -180,11 +180,11 @@ void print_osabi(unsigned char *e_ident)
  */
 void print_abi(unsigned char *e_ident)
 {
-	printf(" ABI Version: %d\n", e_ident[EI_ABIVERSION]);
+	printf("  ABI Version:                       %d\n",                                         e_ident[EI_ABIVERSION]);
 }
 
 /**
- * print_type - prints thetype of an ELF header
+ * print_type - prints the type of an ELF header
  * @e_type: the ELF type
  * @e_ident: a pointer to an array containing the ELF class
  */
@@ -193,7 +193,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 		e_type >>= 8;
 
-	printf(" Type: ");
+	printf(" Type:                              ");
 
 	switch (e_type)
 	{
@@ -210,7 +210,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 		printf("DYN (Share object file)\n");
 		break;
 	case ET_CORE:
-		printf("CORE(Core file)\n");
+		printf("CORE (Core file)\n");
 		break;
 	default:
 		printf("<unknown: %x>\n", e_type);
@@ -218,13 +218,13 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 }
 
 /**
- * print_entry - prints the entry point of an elf header
+ * print_entry - prints the entry point of an ELF header
  * @e_entry: the address of the elf entry point
- * @e_ident: a pointer to an array containing the elf class
+ * @e_ident: a pointer to an array containing the ELF class
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
-	print(" Entry point adress: ");
+	print(" Entry point address:	");
 
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 	{
@@ -241,14 +241,14 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 
 /**
  * close_elf - close an elf file
- * @elf: The file desciptor of the elf file
+ * @elf: The file descriptor of the elf file
  * Description: if the file cannot be closed - exit code 98
  */
 void close_elf(int elf)
 {
 	if (close(elf) == -1)
 	{
-		dprintf(STDERR_FILENO, " Error: Can't close fd %d\n", elf);
+		dprintf(STDERR_FILENO,                                                                       "Error: Can't close fd %d\n", elf);
 		exit(98);
 	}
 }
@@ -259,9 +259,10 @@ void close_elf(int elf)
  * @argc: The number of arguments supplied to the program
  * @argv: an array of pointers to the arguments
  * Return: 0 on success
- * Desciption: if the file is not an elf file or the function fails - exit code98
+ * Desciption: if the file is not an elf file or
+ *             the function fails - exit code 98.
  */
-int main(int__attribute__((__unused__)) argc, char *argv[])
+int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	Elf64_Ehdr *header;
 	int r, o;
@@ -270,7 +271,7 @@ int main(int__attribute__((__unused__)) argc, char *argv[])
 
 	if (o == -1)
 	{
-		dprintf(STDERR_FILENO, "Error:Can't read file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
 	header = malloc(sizeof(EIf64_Ehdr));
@@ -278,6 +279,14 @@ int main(int__attribute__((__unused__)) argc, char *argv[])
 	{
 		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+		exit(98);
+	}
+	r = read(o, header, sizeof(EIF64_Ehdr));
+	if (r == -1)
+	{
+		free(header);
+		close_elf(o);
+		dprintf(STDERR_FILENO, "Error: '%s': No such file\n", argv[1]);
 		exit(98);
 	}
 
