@@ -191,7 +191,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 		e_type >>= 8;
 
-	printf(" Type:                              ");
+	printf(" Type: ");
 
 	switch (e_type)
 	{
@@ -218,11 +218,11 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 /**
  * print_entry - prints the entry point of an ELF header
  * @e_entry: the address of the elf entry point
- * @e_ident: a pointer to an array containing the ELF class
+ * @e_ident: A pointer to an array containing the ELF class
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
-	printf(" Entry point address:	");
+	printf(" Entry point address:		");
 
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 	{
@@ -246,17 +246,16 @@ void close_elf(int elf)
 {
 	if (close(elf) == -1)
 	{
-		dprintf(STDERR_FILENO, 
-			"Error: Can't close fd %d\n", elf);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", elf);
 		exit(98);
 	}
 }
 
 /**
- * main - displays the information contained in the elf header at the start of
+ * main - Displays the information contained in the elf header at the start of
  * an elf file
  * @argc: The number of arguments supplied to the program
- * @argv: an array of pointers to the arguments
+ * @argv: An array of pointers to the arguments
  * Return: 0 on success
  * Desciption: if the file is not an elf file or
  * the function fails - exit code 98.
