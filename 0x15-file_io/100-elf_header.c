@@ -107,13 +107,12 @@ void print_data(unsigned char *e_ident)
 }
 
 /**
- * print_version - prints the version of an elf header
- * @e_ident: a pointer to an array containing the elf version
+ * print_version - Prints the version of an elf header
+ * @e_ident: A  pointer to an array containing the elf version
  */
 void print_version(unsigned char *e_ident)
 {
-	printf(" Version: %d",
-			e_ident[EI_VERSION]);
+	printf(" Version: %d", e_ident[EI_VERSION]);
 
 	switch (e_ident[EI_VERSION])
 	{
@@ -127,8 +126,8 @@ void print_version(unsigned char *e_ident)
 }
 
 /**
- * print_osabi - prints the OS/ABI of an elf header
- * @e_ident: a pointer to an array containing the elf version
+ * print_osabi - Prints the OS/ABI of an elf header
+ * @e_ident: A pointer to an array containing the elf version
  */
 void print_osabi(unsigned char *e_ident)
 {
@@ -170,15 +169,14 @@ void print_osabi(unsigned char *e_ident)
 		printf("<unknown: %x>\n", e_ident[EI_OSABI]);
 	}
 }
-
 /**
  * print_abi - Prints the ABI version of an ELF header
  * @e_ident: A pointer to an array containing the ELF ABI version
  */
 void print_abi(unsigned char *e_ident)
 {
-	printf("  ABI Version:                       %d\n",
-	       e_ident[EI_ABIVERSION]);
+	printf("  ABI Version:
+		%d\n", e_ident[EI_ABIVERSION]);
 }
 
 /**
@@ -238,8 +236,8 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 }
 
 /**
- * close_elf - close an elf file
- * @elf: The file descriptor of the elf file
+ * close_elf - Close an ELF file
+ * @elf: The file descriptor of the ELF file
  * Description: if the file cannot be closed - exit code 98
  */
 void close_elf(int elf)
@@ -250,7 +248,6 @@ void close_elf(int elf)
 		exit(98);
 	}
 }
-
 /**
  * main - Displays the information contained in the elf header at the start of
  * an elf file

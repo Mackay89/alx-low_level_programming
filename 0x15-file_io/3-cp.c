@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdlib.h>
+#in00clude <stdlib.h>
 #include <stdio.h>
 
 char *create_buffer(char *file);
@@ -48,6 +48,7 @@ void close_file(int fd)
  * main - Copies the contents of a file to another file
  * @argc: The number of arguments supplied to the program
  * @argv: An array of the pointers tothe arguments
+ *
  * Return: 0 on success
  *
  * Description: if the argument count is incorrect - exit code 97
