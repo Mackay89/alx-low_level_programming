@@ -46,9 +46,10 @@ void close_file(int fd)
 
 /**
  * main - Copies the contents of a file to another file
- * @argc: the number of arguments supplied to the program
- * @argv: an array of the pointers tothe arguments
+ * @argc: The number of arguments supplied to the program
+ * @argv: An array of the pointers tothe arguments
  * Return: 0 on success
+ *
  * Description: if the argument count is incorrect - exit code 97
  * if file_from does not exist or cannot be read - exit code 98
  * if file_to cannot be created or written to - exit code 99
@@ -56,7 +57,7 @@ void close_file(int fd)
  */
 int main(int argc, char *argv[])
 {
-	int to, from, r, w;
+	int r, w, from, to;
 	char *buffer;
 
 	if (argc != 3)
@@ -85,7 +86,7 @@ int main(int argc, char *argv[])
 		if (to == -1 || w == -1)
 		{
 			dprintf(STDERR_FILENO,
-				"Error:Can't write to %s\n", argv[2]);
+				"Error: Can't write to %s\n", argv[2]);
 			free(buffer);
 			exit(99);
 		}
@@ -98,5 +99,6 @@ int main(int argc, char *argv[])
 	free(buffer);
 	close_file(from);
 	close_file(to);
+
 	return (0);
 }
