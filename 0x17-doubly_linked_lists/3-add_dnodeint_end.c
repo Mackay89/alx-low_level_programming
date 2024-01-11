@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * add_dnodeint - Adds a new node at the end of a dlistint_t list
+ * add_dnodeint_end - Adds a new node at the end of a dlistint_t list
  * @head: pointer to the head of dlistint_t list
  * @n: the integer for the new node to store
  * Return: the address of the new node or NULL if it failed
