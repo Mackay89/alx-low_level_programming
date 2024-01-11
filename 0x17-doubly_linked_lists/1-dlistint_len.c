@@ -2,7 +2,7 @@
 
 /**
  * dlistint_len - Returns the number of elemrnts in a link dlistint_t list
- * @h: The pointer to the head of the list 
+ * @h: The pointer to the head of the list
  * Return: the number of elements
  */
 size_t dlistint_len(const dlistint_t *h)
