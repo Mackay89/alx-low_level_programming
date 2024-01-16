@@ -1,7 +1,10 @@
 #include <stdio.h>
 
 /**
- * _add - adds two numbers and returns the results
+ * add - adds two integers
+ * @a: The first integer
+ * @b: The second integer
+ * Return: the sum of a and b
  */
 int add(int a, int b)
 {
@@ -9,7 +12,10 @@ int add(int a, int b)
 }
 
 /**
- * _sub - Substract the second number from the first and returns the result.
+ * sub - Substract one integer from another
+ * @a: the integer tobe subtracted from
+ * @b: the integer to subtract
+ * Return: the result of subtracting b from a.
  */
 int sub(int a, int b)
 {
@@ -17,7 +23,10 @@ int sub(int a, int b)
 }
 
 /**
- * _mul - Multplies two numbers and return the result.
+ * mul - Multplies two integers
+ * @a: the first integer
+ * @b: the second integer
+ * Return: the product of a and b.
  */
 int mul(int a, int b)
 {
@@ -25,8 +34,10 @@ int mul(int a, int b)
 }
 
 /**
- * _div -Divides the first number by the second and returns the result.
- * @n: ensure the second number (denominator) is not zero to void division
+ * div - Divides one integer by another
+ * @a: the numerator
+ * @b: the dominator
+ * Return: the result of dividing a by b
  */
 int div(int a, int b)
 {
@@ -39,8 +50,10 @@ int div(int a, int b)
 }
 
 /**
- * _mod - computes the remainder when the first number is divided by the second
- * Note: ensure that the second number (modulus) is not zero to avoid division
+ * mod - computes the remainder of the division of one integer by another
+ * @a: the dividend
+ * @b: the divisor
+ * Return: the remainder of the division of a by b
  */
 int mod(int a, int b)
 {
