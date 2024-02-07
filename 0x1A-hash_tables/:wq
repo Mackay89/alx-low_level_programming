@@ -1,7 +1,4 @@
 #include "hash_tables.h"
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 
 /**
  * shash_table_create - Creates a sorted hash table.
@@ -40,30 +37,32 @@ shash_table_t *shash_table_create(unsigned long int size)
  */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
-	shash_node_t *new_node, *tmp, *prev;
-	char *value_copy, *key_copy;
-
+	shash_node_t *new_node, *tmp;
+	char *value_copy, *key_copy
+	unsigned long int index;
 
 	if (!ht || !key || !*key || !value)
 		return (0);
 
 	value_copy = strdup(value);
-	if (!value_copy)
+	if(!value_copy)
 		return (0);
 
-
-	tmp = ht->shead;
-	prev = NULL;
-
-
-	while (tmp && strcmp(key, tmp->key) > 0)
+	index = key_index((const unsigned char *)key, ht->size);
+	tmp = ht->array[index];
+	while (tmp)
 	{
-		prev = tmp;
-		tmp = tmp->snext;
+		if (!strcmp(key, tmp->key))
+		{
+			free(tmp->value);
+			tmp->value = value_copy;
+			free(value_copy);
+			return (1);
+		}
+		tmp = tmp->next;
 	}
-
 	new_node = calloc(1, sizeof(shash_node_t));
-	if (!new_node)
+	if(new_node == NULL)
 	{
 		free(value_copy);
 		return (0);
@@ -80,18 +79,16 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	new_node->key = key_copy;
 	new_node->value = value_copy;
 
-
 	if (prev == NULL)
 	{
-		new_node->snext = ht->shead;
-		ht->shead = new_node;
+		new_node->next = ht->array[index];
+		ht->array[index] = new_node;
 	}
 	else
 	{
-		new_node->snext = prev->snext;
-		prev->snext = new_node;
+		new_node-> = prev->next;
+		prev->next = new_node;
 	}
-
 
 	return (1);
 }
@@ -115,7 +112,7 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	node = ht->array[index];
 	while (node)
 	{
-		if (!strcmp(key, node->key))
+		if (!strcmp(key,node->key))
 			return (node->value);
 		node = node->next;
 	}
@@ -145,7 +142,7 @@ void shash_table_print(const shash_table_t *ht)
 	}
 	printf("}\n");
 }
-
+		
 /**
  * shash_table_print_rev - Prints a sorted hash table in reverse order.
  * @ht: A pointer to the sorted hash table to print.
@@ -153,7 +150,7 @@ void shash_table_print(const shash_table_t *ht)
 void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *node;
-	int flag = 0;
+	int flag = 0
 
 	if (!ht)
 		return;
@@ -183,7 +180,7 @@ void shash_table_delete(shash_table_t *ht)
 	if (!ht)
 		return;
 
-	for (i = 0; i < ht->size; i++)
+	for (i = 0; i< ht->size; i++)
 	{
 		node = ht->array[i];
 		while (node)
