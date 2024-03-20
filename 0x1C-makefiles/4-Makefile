@@ -10,7 +10,7 @@ all: $(OBJ)
 
 
 clean:
-	$(RM) *- $(NAME)
+	$(RM) *~ $(NAME)
 
 
 oclean:

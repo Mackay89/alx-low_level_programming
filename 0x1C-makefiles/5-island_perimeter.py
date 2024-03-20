@@ -16,7 +16,6 @@ def island_perimater(grid):
         int: The perimeter of the island.
     """
 
-
     height = len(grid)
     width = len(grind[0])
     edge = 0
@@ -26,7 +25,7 @@ def island_perimater(grid):
         for j in range(width):
             if grid[i][j] == 1:
                 size += 1
-                if ( > 0 and grid[i][j] - 1][j] == 1):
+                if (j > 0 and grid[i][j - 1] == 1):
                     edges += 1
                 if (i > 0 and grid[i - 1][j] == 1):
                     edges += 1
