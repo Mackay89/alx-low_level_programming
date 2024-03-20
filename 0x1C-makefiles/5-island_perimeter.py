@@ -4,9 +4,9 @@ Module for perimeter of island
 """
 
 
-def island_perimater(grid):
+def island_perimeter(grid):
     """
-    Return the perimeter of the island descibed in grid.
+    Return the perimeter of the island described in grid.
 
     Args:
         grid (list of list of int): Represents the island grid.
@@ -16,10 +16,12 @@ def island_perimater(grid):
         int: The perimeter of the island.
     """
 
+
     height = len(grid)
-    width = len(grind[0])
-    edge = 0
+    width = len(grid[0])
+    edges = 0
     size = 0
+
 
     for i in range(height):
         for j in range(width):
