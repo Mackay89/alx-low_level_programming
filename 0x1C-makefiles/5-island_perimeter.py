@@ -34,6 +34,5 @@ def island_perimeter(grid):
                     perimeter -= 2
                 if i > 0 and grid[i - 1][j] == 1:
                     perimeter -= 2
-    
     return perimeter
 
