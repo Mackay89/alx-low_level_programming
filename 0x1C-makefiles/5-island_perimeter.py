@@ -22,8 +22,6 @@ def island_perimeter(grid):
     perimeter = 0
     height = len(grid)
     width = len(grid[0])
-    edges = 0
-    size = 0
 
     
     for i in range(height):
